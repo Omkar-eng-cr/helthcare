@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Healthcare Management System</h1>
+        <div class="section-container">
+            <button onclick="showForm('patient')">Patient</button>
+            <button onclick="showForm('doctor')">Doctor</button>
+        </div>
+    </div>
+
+    <div id="patient-form" class="form-container">
+        <h2>Patient Login</h2>
+        <form id="patient-form-element" onsubmit="event.preventDefault(); saveSymptoms(); showPayment();">
+            <label for="patient-name">Name:</label>
+            <input type="text" id="patient-name" required>
+
+            <label for="patient-email">Email:</label>
+            <input type="email" id="patient-email" required>
+
+            <label for="patient-age">Age:</label>
+            <input type="number" id="patient-age" required>
+
+            <label for="patient-height">Height (cm):</label>
+            <input type="number" id="patient-height" required>
+
+            <label for="patient-weight">Weight (kg):</label>
+            <input type="number" id="patient-weight" required>
+
+            <label for="patient-symptoms">Symptoms:</label>
+            <textarea id="patient-symptoms" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="doctor-form" class="form-container">
+        <h2>Doctor Login</h2>
+        <form id="doctor-form-element" onsubmit="event.preventDefault(); showSymptoms();">
+            <label for="doctor-name">Name:</label>
+            <input type="text" id="doctor-name" required>
+
+            <label for="doctor-email">Email:</label>
+            <input type="email" id="doctor-email" required>
+
+            <label for="doctor-degree">Upload Degree:</label>
+            <input type="file" id="doctor-degree" accept="image/*" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="symptoms-container" class="symptoms-container">
+        <h2>Patient Symptoms</h2>
+        <p id="symptoms-data">No data available</p>
+        <button onclick="showPrescriptionForm()">Provide Prescription</button>
+    </div>
+
+    <div id="prescription-container" class="prescription-container">
+        <h2>Prescription</h2>
+        <form onsubmit="event.preventDefault(); savePrescription();">
+            <label for="prescription">Prescription:</label>
+            <textarea id="prescription" required></textarea>
+            <button type="submit">Save Prescription</button>
+        </form>
+    </div>
+
+    <div id="payment-container" class="payment-container">
+        <h2>Pay Rs 10 for Doctor Fees</h2>
+        <img src="QR.jpg" alt="Payment QR Code">
+        <p>Scan the QR code to complete the payment.</p>
+        <button onclick="showSuccessPage()">Paid</button>
+    </div>
+
+    <div id="success-container" class="success-container" style="display: none;">
+        <h2>Payment Successful</h2>
+        <p>Thank you for your payment. Your appointment is confirmed.</p>
+        <button onclick="showPatientPrescription()">View Prescription</button>
+    </div>
+
+    <div id="patient-prescription-container" class="patient-prescription-container">
+        <h2>Your Prescription</h2>
+        <p id="patient-prescription">No prescription available</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
